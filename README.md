@@ -48,3 +48,20 @@ Get started with Rasa in the browser using GitHub Codespaces.
       actions_module: "actions" # path to your actions package
     ```
    Then re-run your assistant via `rasa inspect` every time you make changes to your custom actions.
+
+7. **MRCS OSCE Coaching Scenario:**
+  - The MRCS scenario is in `MRCS B`.
+  - Train the model with:
+    ```bash
+    rasa train --domain "MRCS B/domain.yml" --config "MRCS B/config.yml" --data "MRCS B/data"
+    ```
+  - Start the assistant and interact with it as a surgical trainee:
+    1. "Start the MRCS upper abdominal pain scenario"
+    2. Ask structured history questions (`ask_name`, `ask_pain_site`, etc.)
+    3. Finalise with a summary and plan, e.g., "I would summarise as follows..."
+  - The custom action `action_mrcs_history_summary` generates domain-specific feedback.
+
+8. **Run tests:**
+  ```bash
+  pytest -q "MRCS B/tests"
+  ```
